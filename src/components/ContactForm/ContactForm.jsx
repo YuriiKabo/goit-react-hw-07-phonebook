@@ -1,12 +1,11 @@
 // import css from './ContactForm.module.css';
-import { nanoid } from 'nanoid';
 import { Form, Formik, Field, Label, Button } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/Contacts/slice';
+import { addContact } from 'api';
 
 export function ContactForm() {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts.items);
 
   const getValues = inputValues => {
     if (inputValues.name === '' || inputValues.number === '') {
@@ -20,10 +19,8 @@ export function ContactForm() {
     } else {
       const contact = {
         name: inputValues.name,
-        number: inputValues.number,
-        id: nanoid(),
+        phone: inputValues.number,
       };
-
       dispatch(addContact(contact));
       inputValues.name = '';
       inputValues.number = '';

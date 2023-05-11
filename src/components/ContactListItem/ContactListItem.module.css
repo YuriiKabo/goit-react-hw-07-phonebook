@@ -5,7 +5,7 @@
   align-items: center;
   gap: 8px;
   height: 20px;
-  width: 270px;
+  width: auto;
   padding: 4px;
   background-color: #e6e6e6;
 }
